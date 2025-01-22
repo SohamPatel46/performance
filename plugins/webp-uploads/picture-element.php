@@ -189,7 +189,7 @@ function webp_make_lightbox_trigger_button_visible(): void {
  *
  * @return void
  */
-function webp_add_footer_action_for_lightbox_button_visibility() {
+function webp_add_footer_action_for_lightbox_button_visibility(): void {
 	if ( webp_uploads_is_picture_element_enabled() ) {
 		add_action( 'wp_footer', 'webp_make_lightbox_trigger_button_visible' );
 	}
