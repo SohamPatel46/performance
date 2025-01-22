@@ -174,7 +174,6 @@ function webp_uploads_wrap_image_in_picture( string $image, string $context, int
  *
  * @since n.e.x.t
  *
- * @return void
  */
 function webp_make_lightbox_trigger_button_visible(): void {
 	if ( has_filter( 'render_block_core/image', 'block_core_image_render_lightbox' ) ) {
@@ -184,10 +183,9 @@ function webp_make_lightbox_trigger_button_visible(): void {
 
 /**
  * Add an action to wp_footer conditionally for lighbox trigger button visibility.
- * 
+ *
  * @since n.e.x.t
  *
- * @return void
  */
 function webp_add_footer_action_for_lightbox_button_visibility(): void {
 	if ( webp_uploads_is_picture_element_enabled() ) {
