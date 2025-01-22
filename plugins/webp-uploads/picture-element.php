@@ -172,16 +172,26 @@ function webp_uploads_wrap_image_in_picture( string $image, string $context, int
 /**
  * Adds CSS to make Lightbox trigger BUTTON visible on an Image lightbox when Picture Element is enabled.
  *
- * @since 2.4.0
- * 
+ * @since n.e.x.t
+ *
+ * @return void
  */
-function webp_make_lightbox_trigger_button_visible() {
-    if ( has_filter( 'render_block_core/image', 'block_core_image_render_lightbox' ) ) {
-		echo '<style>
-			.wp-lightbox-container > :hover {
-				opacity: 1;
-			}
-		</style>';
+function webp_make_lightbox_trigger_button_visible(): void {
+	if ( has_filter( 'render_block_core/image', 'block_core_image_render_lightbox' ) ) {
+		echo '<style> .wp-lightbox-container > picture + button { opacity: 1 } </style>';
 	}
 }
-add_action( 'wp_footer', 'webp_make_lightbox_trigger_button_visible' );
+
+/**
+ * Add an action to wp_footer conditionally for lighbox trigger button visibility.
+ * 
+ * @since n.e.x.t
+ *
+ * @return void
+ */
+function webp_add_footer_action_for_lightbox_button_visibility() {
+	if ( webp_uploads_is_picture_element_enabled() ) {
+		add_action( 'wp_footer', 'webp_make_lightbox_trigger_button_visible' );
+	}
+}
+add_action( 'init', 'webp_add_footer_action_for_lightbox_button_visibility' );
